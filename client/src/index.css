@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; }
+
+/* Navbar is fixed, so sections need top margin offset */
+section { scroll-margin-top: 100px; }
