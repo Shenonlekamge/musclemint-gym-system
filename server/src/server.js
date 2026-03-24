@@ -12,6 +12,19 @@ import seedRoutes from "./routes/seedRoutes.js";
 import express from "express";
 import Member from "./models/Member.js";
 import staffRoutes from "./routes/staffRoutes.js";
+import cors from "cors";
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  process.env.CLIENT_URL, // will be your Vercel URL later
+].filter(Boolean);
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true,
+  })
+);
 
 const router = express.Router();
 
