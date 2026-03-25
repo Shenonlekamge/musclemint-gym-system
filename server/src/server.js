@@ -3,8 +3,6 @@ import dotenv from "dotenv";
 import { connectDB } from "./config/db.js";
 import memberRoutes from "./routes/memberRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
-import { requireAuth } from "./middleware/auth.js/requireAuth.js";
-import { requireRole } from "./middleware/auth.js/requireRole.js";
 import userRoutes from "./routes/userRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
 import planRoutes from "./routes/planRoutes.js";
