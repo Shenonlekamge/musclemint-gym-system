@@ -20,7 +20,7 @@ dotenv.config();
 const app = express();
 
 // ✅ Allowed origins for local dev + deployed frontend (Vercel)
-const allowedOrigins = ["http://localhost:5173", process.env.CLIENT_URL].filter(
+const allowedOrigins = ["http://localhost:5173", "https://musclemintgym.vercel.app"].filter(
   Boolean
 );
 

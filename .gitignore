@@ -4,3 +4,7 @@
 client/.env
 server/.env
 
+# dependencies
+node_modules
+client/node_modules
+server/node_modules
