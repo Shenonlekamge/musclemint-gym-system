@@ -20,14 +20,26 @@ dotenv.config();
 const app = express();
 
 // ✅ Allowed origins for local dev + deployed frontend (Vercel)
-const allowedOrigins = ["http://localhost:5173", "https://musclemintgym.vercel.app"].filter(
-  Boolean
-);
+const allowedOrigins = [
+  "http://localhost:5173",
+  process.env.CLIENT_URL, // your production vercel url
+].filter(Boolean);
 
 // middleware
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: (origin, cb) => {
+      // allow Postman / server-to-server
+      if (!origin) return cb(null, true);
+
+      // allow listed origins
+      if (allowedOrigins.includes(origin)) return cb(null, true);
+
+      // allow Vercel preview + prod domains
+      if (origin.endsWith(".vercel.app")) return cb(null, true);
+
+      return cb(new Error("CORS blocked: " + origin));
+    },
     credentials: true,
   })
 );
